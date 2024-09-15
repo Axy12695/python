@@ -1,0 +1,996 @@
+a=eval(input())
+b=eval(input())
+s=a*b
+print(s)
+
+
+a=float(input())
+b=float(input())
+s=a*b
+print(s)
+
+
+a=eval(input())
+b=eval(input())
+s=a*b
+print(s)
+
+
+a=eval(input())
+b=eval(input())
+s=float(a*b)
+print(round(s,3))
+
+
+a=eval(input())
+b=eval(input())
+s=a*b
+print(f"{s:.2f}")
+
+
+a=eval(input())
+b=eval(input())
+s=a*b
+c=round(a,3)
+d=round(b,3)
+print(f'长为{c}宽为{d}的矩形面积为{s:.2f}')
+
+
+import math
+
+radius=6371
+s=(4*math.pi*radius**2)/10000
+print(f"地球表面积为{s:.4f}万平方千米")
+
+
+import math
+
+radius = 6371
+volume = (4*math.pi*radius*radius**2)/(3*10000)
+print(f'地球体积为{volume:.4f}万立方千米')
+
+
+import math
+
+radius = 6371
+circumference = 2*math.pi*radius
+print(f'地球赤道周长为{circumference:.4f}千米')
+
+
+import math
+
+new_radius = 1/(2*math.pi)
+print(f'空隙大小为{new_radius:.3f}米')
+
+if new_radius>0.1:
+    print("老鼠可以从空隙中钻过")
+else:
+    print("老鼠无法通过空隙")
+
+
+import math
+r =6371*1000
+v=(4/3)*math.pi*r**3
+p=5507.85
+mass=p*v
+m_in_trillion_tons=mass/1e15
+print(f"地球质量约为{m_in_trillion_tons:.1f}万亿吨")
+print('地球质量约为{:e}千克'.format(mass))
+
+
+mport math
+
+AB = float(input())  # 弦长度
+CD = float(input())  # 弓高度
+AD = AB/2
+
+# 半径
+OA = (AD**2+CD**2)/(CD*2)
+print(f'{OA:.2f}')
+
+
+import math
+
+def calculate_bow_area(AB, CD):
+    AD = AB / 2
+    OA = (AD**2 + CD**2) / (2 * CD)
+    
+    angle_AOB = 2 * math.asin(AD / OA)
+    
+    area_sector = (angle_AOB / (2 * math.pi)) * math.pi * OA**2
+    area_triangle = 0.5 * OA * OA * math.sin(angle_AOB)
+    
+    area_bow = area_sector - area_triangle
+    
+    return round(area_bow, 2)
+
+
+def circle(radius):
+    """接收圆的半径，返回圆形的面积，圆周率用math.pi"""
+    s1=math.pi*radius**2
+    return f'圆形的面积为{s1:.2f}'
+
+
+def square(length, width):
+    """计算长方形的面积"""
+    area_of_square = length * width
+    return f'长方形的面积为{area_of_square:.2f}'
+
+
+def cube(length, width, height):
+    """计算长方体的表面积和体积"""
+    area_of_cube = length * width * 2 + width * height * 2 + length * height * 2
+    volume_of_cube = length * width * height
+    return f'长方体的表面积为{area_of_cube:.2f}, 体积为{volume_of_cube:.2f}'
+
+
+def sphere(radius):
+    """接收球的半径，返回球的表面积和体积，圆周率用math.pi"""
+    s2=4*math.pi*radius**2
+    v2=(4/3)*math.pi*radius**3
+    return f'球的表面积为{s2:.2f}, 体积为{v2:.2f}'
+
+
+def cylinder(radius, height):
+    """接收圆柱体的底面半径和高，返回圆柱体的表面积和体积，圆周率用math.pi"""
+    s3=2*math.pi*radius*height+math.pi*radius**2*2
+    v3=math.pi*radius**2*height
+    return f'圆柱体的表面积为{s3:.2f}, 体积为{v3:.2f}'
+
+
+def cone(radius, height):
+    """接收圆锥的底面半径和高，返回圆锥的表面积和体积，圆周率用math.pi"""
+    s4=math.pi*radius**2+math.pi*radius*math.sqrt(radius**2+height**2)
+    v4=(1/3)*math.pi*radius**2*height
+    return f'圆锥的表面积为{s4:.2f}, 体积为{v4:.2f}'
+
+
+def cone(radius, height):
+    """接收圆锥的底面半径和高，返回圆锥的表面积和体积，圆周率用math.pi"""
+    s4=math.pi*radius**2+math.pi*radius*math.sqrt(radius**2+height**2)
+    v4=(1/3)*math.pi*radius**2*height
+    return f'圆锥的表面积为{s4:.2f}, 体积为{v4:.2f}'
+
+
+python = 3
+math = 4
+english = 4
+physical_education = 2
+military_theory = 2
+philosophy = 2
+# 补充你的代码
+a=int(input())
+b=float(input())
+month=5
+c=0.6*(a*(python+math+english+physical_education+military_theory+philosophy)+month*b)
+print(f"请输入每学分学费金额：请输入你每个月生活费：本学期你能够贷款{c:.2f}元")
+
+
+python = 3
+math = 4
+english = 4
+physical = 2
+military_theory = 2
+philosophy = 2
+# 补充你的代码
+credits=17
+tuition_per_credit=int(input())
+tuition=tuition_per_credit*credits
+print(f'你本学期选修了{credits}个学分。')
+print(f'你应缴纳的学费为{tuition}元。')
+
+
+import math
+
+r = float(input())
+
+n = float(input())
+
+alpha = math.radians(n)
+
+l = alpha * r
+
+print(f"弧长为{l:.2f}")
+
+
+fields = [
+    {"弦": 30, "矢": 15},
+    {"弦": 78.5, "矢": 13.777777777777777}  # 13步9分之7步转换为小数
+]
+
+# 计算每块田地的面积，并转换为亩
+for field in fields:
+    b = field["弦"]
+    h = field["矢"]
+    area = 0.5 * (b * h + h ** 2)
+    
+    # 将面积转换为亩数
+    mu = area / 240
+    
+    # 输出结果
+    if mu < 1:
+        print(f"弓形田地面积为{mu * 240:.2f}平方步")
+    else:
+        integer_part = int(mu)
+        decimal_part = (mu - integer_part) * 240
+        print(f"弓形田地面积为{integer_part}亩零{decimal_part:.2f}平方步")
+
+
+b = float(input())
+
+h = float(input())
+
+area = 0.5 * (b * h + h ** 2)
+
+mu = area / 240
+
+integer_part = int(mu)
+decimal_part = (mu - integer_part) * 240
+print(f"弓形田地面积为{integer_part}亩零{decimal_part:.2f}平方步")
+
+
+import math
+
+# 输入弦长 AB 和弧高 CD
+AB = float(input())
+CD = float(input())
+
+# 弧田法计算弓形面积
+b = AB  # 弦长
+h = CD  # 弧高
+
+# 计算弓形田地面积（弧田法）
+s_hutian = 0.5 * (b * h + h ** 2)
+
+# 现代方法计算弓形面积
+# 计算 AD, OA, ∠AOB
+AD = b / 2
+OA = (AD ** 2 + CD ** 2) / (2 * CD)
+
+# 计算圆心角 ∠AOB
+angle_AOB = 2 * math.asin(AD / OA)
+
+# 计算扇形面积
+sector = (angle_AOB / (2 * math.pi)) * math.pi * OA ** 2
+
+# 计算三角形面积
+triangle = 0.5 * OA ** 2 * math.sin(angle_AOB)
+
+# 计算弓形面积
+arch_modern = sector - triangle
+
+# 弓形面积单位转换
+# 1亩 = 240平方步
+s_hutian_acres = int(s_hutian // 240)
+s_hutian_steps = round(s_hutian % 240, 2)
+
+arch_modern_acres = int(arch_modern // 240)
+arch_modern_steps = round(arch_modern % 240, 2)
+
+# 输出结果
+print(f"弧田法计算弓形田地面积为{s_hutian_acres}亩零{s_hutian_steps}平方步")
+print(f"现代方法计算弓形田地面积为{arch_modern_acres}亩零{arch_modern_steps}平方步")
+
+
+a = float(input())
+r = float(input())
+
+area = (a * r) / 4
+
+mu = area / 240
+
+integer_part = int(mu)
+decimal_part = (mu - integer_part) * 240
+
+print(f"宛田法计算扇形田地面积为{integer_part}亩零{decimal_part:.2f}平方步")
+
+
+import math
+
+r = 2
+
+theta_degrees = 60
+theta_radians = math.radians(theta_degrees)
+
+AB = 2 * r * math.sin(theta_radians / 2)
+
+CD = r - math.sqrt(r**2 - (AB/2)**2)
+
+a = (11 - 3 * math.sqrt(3))/2
+b = (11 - 4 * math.sqrt(3))/2
+c = (9 - 3 * math.sqrt(3))/2
+d = (9 - 4 * math.sqrt(3))/2
+
+s = AB + (CD**2 / r)
+
+print(f"a={a:.4f},b={b:.4f},c={c:.4f},d={d:.4f}")
+print(f"会圆法计算弧长为{s:.4f}")
+
+
+a=int(input())
+b=int(input())
+add=a+b
+sub=a-b
+mul=a*b
+div=a/b
+print(f"请输入第一个数字：请输入第二个数字：和：{add:.2f}")
+print(f"差：{sub:.2f}")
+print(f"积：{mul:.2f}")
+print(f"商：{div:.2f}")
+
+
+velocity=float(input())
+distance_to_obstacle=float(input())
+max_deceleration=float(input())
+braking_distance = (velocity ** 2) / (2 * max_deceleration)
+if braking_distance>distance_to_obstacle:
+    print(f"请输入当前速度（米/秒）：请输入障碍物距离（米）：请输入车辆最大制动加速度（米/秒²）：制动距离为：{braking_distance:.2f} 米")
+    print("警告：车辆将会撞上障碍物！")
+else:
+    print(f"请输入当前速度（米/秒）：请输入障碍物距离（米）：请输入车辆最大制动加速度（米/秒²）：制动距离为：{breaking_distance:.2f} 米")
+
+
+import math
+
+lat1 = math.radians(float(input()))
+lon1 = math.radians(float(input()))
+
+lat2 = math.radians(float(input()))
+lon2 = math.radians(float(input()))
+
+dlon = lon2 - lon1
+dlat = lat2 - lat1
+a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+r = 6371  
+distance = r * c
+# 格式化并输出距离，保留两位小数
+print(f"请输入第一个点的纬度（度）：请输入第一个点的经度（度）：请输入第二个点的纬度（度）：请输入第二个点的经度（度）：两点之间的距离为：{distance:.2f} 公里")
+
+
+expression = input()
+result = eval(expression)
+print(result)
+
+
+expression=eval(input())
+result=sum(expression)
+print(result)
+
+
+list=eval(input())
+integers_list=[]
+for item in list:
+    if item.isdigit():
+        integers_list.append(int(item))
+
+result=sum(integers_list)
+print(integers_list)
+print(result)
+
+
+list = input()
+
+split_list = list.split()
+
+integers_list = []
+
+for item in split_list:
+
+    if item.isdigit():
+        integers_list.append(int(item))
+
+total_sum = sum(integers_list)
+
+print(total_sum)
+
+
+a=int(input())
+s=a**2
+print(s)
+
+
+a=float(input())
+s=a**2
+print(s)
+
+
+a=eval(input())
+s=a**2
+print(s)
+
+
+a=float(input())
+s=a**2
+print(round(s,4))
+
+
+a=float(input())
+s=a**2
+print(f"area = {s:.2f}平方米")
+
+
+a=float(input())
+if a<0:
+    b=abs(a)
+    v1=b**3
+    print(f"volume = {v1:.2f}立方米")
+else:
+    v2=a**3
+    print(f"volume = {v2:.2f}立方米")
+
+
+max_number = max(numbers)
+
+edge_length = abs(max_number)
+
+volume = edge_length ** 3
+
+print(f"volume = {volume:.2f}立方米")
+
+
+r=math.sqrt(num)
+
+# 补充一条语句,用math库中的圆周率常数计算圆的面积
+
+area=math.pi*r**2
+# 输出时精确保留小数点后3位数字
+print(f'area = {area:.3f}')
+
+
+g_c_d = math.gcd(num1,num2)
+# 补充一行代码，输出最大公约数的阶乘
+print(math.factorial(g_c_d))
+
+l_c_m = math.lcm(num1,num2)
+# 补充一行代码，输出最小公倍数的阶乘
+print(math.factorial(l_c_m))
+
+
+a=eval(input())
+b=eval(input())
+s=a*b
+print(s)
+
+
+import math
+
+m=int(input())
+n=int(input())
+CM=2.54
+m_cm=int(m*CM)
+n_cm=int(n*CM)
+m_area=math.pi*(m_cm/2)**2
+n_area=math.pi*(n_cm/2)**2
+number = math.ceil(m_area / n_area)
+print(number)
+
+
+def convert_decimal_to_bases(decimal_number):
+    if decimal_number < 0:
+        octal = "-0o" + oct(abs(decimal_number))[2:]
+        hexadecimal = "-0x" + hex(abs(decimal_number))[2:]
+    else:
+        octal = "0o" + oct(decimal_number)[2:]
+        hexadecimal = "0x" + hex(decimal_number)[2:]
+    
+    return octal, hexadecimal
+
+# 读取用户输入
+decimal_number = int(input())
+
+# 调用函数进行转换
+octal_number, hexadecimal_number = convert_decimal_to_bases(decimal_number)
+
+# 打印输出
+print(octal_number)
+print(hexadecimal_number)
+
+
+def absolute_value(n):
+    
+    abs_val = abs(n)
+   
+    if isinstance(n, int):
+        return int(abs_val)
+    
+    elif isinstance(n, float):
+        return float(abs_val)
+
+n = input()
+
+try:
+    
+    n = int(n)
+except ValueError:
+   
+    n = float(n)
+
+result = absolute_value(n)
+
+print(result)
+
+
+def division(m, n):
+      c=a//b
+      d=a/b
+      print(c)
+      print(d)
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    division(a, b)  # 调用函数计算除法
+
+
+a=int(input())
+b=int(input())
+print(f"{a} + {b} = {a + b}")
+print(f"{a} - {b} = {a - b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")
+
+
+a=int(input())
+b=int(input())
+m=int(input())
+s=pow(a,b)
+n=pow(a,b,m)
+print(s)
+print(n)
+
+
+a=float(input())
+b=float(input())
+c=int(input())
+pi=3.14159
+s=(pi*a**2-pi*b**2)*c
+print(f"{s:.2f}")
+
+
+import math
+
+a=float(input())
+b=float(input())
+c=float(input())
+
+d=a+b+c
+s=(a+b+c)/2
+area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+print(f"周长={d:.2f}")
+print(f"面积={area:.2f}") 
+
+
+import math
+
+a=float(input())
+b=float(input())
+c=float(input())
+x=(-b+math.sqrt(b**2-4*a*c))/(a*2)
+print(f"{x:.2f}")
+
+
+import math
+a=float(input())
+b=float(input())
+x=(-b+math.sqrt(a*2*math.sin(math.pi/3)*math.cos(math.pi/3)))/(a*2)
+print(f"{x:.2f}")
+
+
+python = 3
+math = 4
+english = 4
+physical = 2
+military_theory = 2
+philosophy = 2
+#==================
+# 补充你的代码
+a=int(input())
+b=float(input())
+month=5
+c=0.6*(a*(python+math+english+physical+military_theory+philosophy)+month*b)
+print(f"本学期你能够贷款{c:.2f}元")
+
+
+a=int(input())
+b=int(input())
+c=float(input())
+d=a*((1+c)**b)
+s=d-a
+print(f"利息={s:.2f}")
+
+
+def circle(radius):
+    """接收圆的半径，返回圆形的面积，圆周率用math.pi"""
+    # 对齐此位置补充你的代码
+    s1=math.pi*radius**2
+    return f'圆形的面积为{s1:.2f}'
+
+def sphere(radius):
+    """接收球的半径，返回球的表面积和体积，圆周率用math.pi"""
+    # 对齐此位置补充你的代码
+    s2=4*math.pi*radius**2
+    v2=(4/3)*math.pi*radius**3
+    return f'球的表面积为{s2:.2f}, 体积为{v2:.2f}'
+
+def cylinder(radius, height):
+    """接收圆柱体的底面半径和高，返回圆柱体的表面积和体积，圆周率用math.pi"""
+    # 对齐此位置补充你的代码
+    s3=2*math.pi*radius*height+math.pi*radius**2*2
+    v3=math.pi*radius**2*height
+    return f'圆柱体的表面积为{s3:.2f}, 体积为{v3:.2f}'
+
+def cone(radius, height):
+    """接收圆锥的底面半径和高，返回圆锥的表面积和体积，圆周率用math.pi"""
+    # 对齐此位置补充你的代码
+    s4=math.pi*radius**2+math.pi*radius*math.sqrt(radius**2+height**2)
+    v4=(1/3)*math.pi*radius**2*height
+    return f'圆锥的表面积为{s4:.2f}, 体积为{v4:.2f}'
+
+
+import math
+
+radius = 6371 * 1000
+# 1. 计算地球表面积（表面积公式S = 4πR2）
+surface_area = 4*math.pi*radius**2
+print(f'地球表面积为{surface_area:.2f}平方米')
+# 2. 计算地球体积（体积公式是V = 4πR3/3）
+volume = (4*math.pi*radius*radius*radius)/3
+print(f'地球体积为{volume:.2f}立方米')
+
+# 3. 计算地球赤道的周长（圆周长公式是L = 2πR）
+circumference = 2*math.pi*radius
+print(f'地球赤道周长为{circumference:.2f}米')
+
+# 4.计算绳子与地球之间的空隙大小
+new_radius = 1/(2*math.pi)
+print(f'空隙大小为{new_radius:.2f}米')
+
+
+# 5.判断老鼠是否可以从空隙中钻过
+if new_radius>0.1:
+    print("老鼠可以从空隙中钻过")
+else:
+    print("老鼠无法通过空隙")
+
+
+available_times = {
+    'Andrew': [(60, 360)],  # 11 am 到 3 pm
+    'Joanne': [(0, 120), (210, 300)],  # 中午到 2 pm, 3:30 pm 到 5 pm
+    'Hannah': [(0, 30), (120, 360)]  # 中午开始有半小时空闲，2 pm 到 6 pm
+}
+
+all_times = []
+for times in available_times.values():
+    all_times.extend(times)
+
+all_times.sort()
+
+common_free_times = []
+for time in all_times:
+    if not common_free_times or time[0] > common_free_times[-1][1]:
+        common_free_times.append(time)
+    else:
+        common_free_times[-1] = (common_free_times[-1][0], max(common_free_times[-1][1], time[1]))
+
+meeting_duration = 30  # 会议持续时间为30分钟
+possible_meetings = []
+
+for free_time in common_free_times:
+    if free_time[1] - free_time[0] >= meeting_duration:
+        possible_meetings.append((free_time[0], free_time[0] + meeting_duration))
+
+# 格式化输出结果
+for start, end in possible_meetings:
+    start_hour = (start // 60) % 12 or 12  # 将分钟转换为小时，并处理12小时制
+    start_minute = start % 60
+    end_hour = (end // 60) % 12 or 12
+    end_minute = end % 60
+    print(f"可用于安排三人进行会谈的时间段为：{start_hour}:{start_minute:02d} pm - {end_hour}:{end_minute:02d} pm")
+
+
+import math
+
+a=float(input())
+b=float(input())
+c=float(input())
+x1=(-b+math.sqrt(b**2-4*a*c))/(a*2)
+x2=(-b-math.sqrt(b**2-4*a*c))/(a*2)
+print(f"{x1:.2f} {x2:.2f}")
+
+
+a = input()
+b = input()
+c = int(a , 2)
+d = int(b , 2)
+
+sum = c + d
+
+sum_binary = bin(sum)[2:]
+print(sum_binary)
+
+
+price = 15.00  
+quantity = 5500  
+
+increase_rate = 0.10  
+
+days = 15
+
+sell_price = price * (1 + increase_rate) ** days
+
+total_buy_cost = price * quantity
+
+total_sell_revenue = sell_price * quantity
+
+profit = total_sell_revenue - total_buy_cost
+
+print(f"{profit:.2f}")
+
+
+import math
+
+a=float(input())
+b=float(input())
+c=float(input())
+
+d=a+b+c
+s=(a+b+c)/2
+area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+print(f"周长={d:.2f}")
+print(f"面积={area:.2f}") 
+
+
+import math
+a=float(input())
+b=float(input())
+x=(-b+math.sqrt(a*2*math.sin(math.pi/3)*math.cos(math.pi/3)))/(a*2)
+print(f"{x:.2f}")
+
+
+import math
+
+a=float(input())
+b=float(input())
+c=float(input())
+x=(-b+math.sqrt(b**2-4*a*c))/(a*2)
+print(f"{x:.2f}")
+
+
+a=eval(input())
+b=eval(input())
+s=a*b
+print(s)
+
+
+import math
+
+m=int(input())
+n=int(input())
+CM=2.54
+m_cm=int(m*CM)
+n_cm=int(n*CM)
+m_area=math.pi*(m_cm/2)**2
+n_area=math.pi*(n_cm/2)**2
+number = math.ceil(m_area / n_area)
+print(number)
+
+
+a=int(input())
+b=int(input())
+c=float(input())
+d=a*((1+c)**b)
+s=d-a
+print(f"利息={s:.2f}")
+
+
+def absolute_value(n):
+    
+    abs_val = abs(n)
+    
+    if isinstance(n, int):
+        return int(abs_val)
+    
+    elif isinstance(n, float):
+        return float(abs_val)
+
+n = input()
+
+try:
+    
+    n = int(n)
+except ValueError:
+   
+    n = float(n)
+    
+result = absolute_value(n)
+
+print(result)
+
+
+input_str = input()
+mileage, wait_time = map(int, input_str.split(','))
+
+base_fee = 13
+
+basic_rate = 2.3
+
+surcharge_percentage = 0.5
+
+if mileage <= 3:
+    mileage_fee = base_fee
+elif mileage <= 15:
+    mileage_fee = base_fee + (mileage - 3) * basic_rate
+else:
+    mileage_fee = base_fee + (15 - 3) * basic_rate + (mileage - 15) * basic_rate * (1 + surcharge_percentage)
+
+wait_fee = wait_time
+
+total_fee = mileage_fee + wait_fee
+
+print(int(total_fee))
+
+
+n = int(input())
+
+square_sum = (n * (n + 1) * (2 * n + 1)) // 6
+
+print(square_sum)
+
+
+def leibniz_of_pi(error):
+    n = 0
+    pi_over_4 = 0.0
+    
+    while True:
+        term = (-1)**n / (2 * n + 1)
+        if abs(term) <= error:
+            break
+        pi_over_4 += term
+        n += 1
+    
+    return pi_over_4 * 4
+
+if __name__ == '__main__':
+    threshold = float(input())
+    pi_value = leibniz_of_pi(threshold)
+    print("{:.8f}".format(pi_value))
+
+
+mport math  
+  
+def cutting_circle(n):      # n为分割次数  
+    """接收表示分割次数的整数n为参数，计算分割n次时正多边形的边数和圆周率值，返回边数和圆周率值"""  
+    side_length = 1         # 初始边长  
+    edges = 6               # 初始边数  
+      
+    for i in range(n):  
+        # 使用勾股定理计算新的边长  
+        # 新的边长 = sqrt(2 - 2 * sqrt(1 - (原边长 / 2)^2))  
+        side_length = math.sqrt(2 - 2 * math.sqrt(1 - (side_length / 2) ** 2))  
+        edges *= 2  # 每次边数加倍  
+      
+    pi = side_length * edges / 2  # 计算圆周率  
+    return edges, round(pi, 6)  
+  
+if __name__ == '__main__':  
+    times = int(input())          # 割圆次数  
+    edges, pi = cutting_circle(times)  
+    print('分割{}次，边数为{}，圆周率为{}'.format(times, edges, pi))  # 圆周率  
+    print(f'math库中的圆周率常量值为{round(math.pi, 6)}')
+
+
+import math  
+  
+def calculate_pi():   
+    arctan_1_5 = math.atan(1/5)  
+    arctan_1_239 = math.atan(1/239)  
+       
+    pi_over_4 = 4 * arctan_1_5 - arctan_1_239  
+       
+    pi = pi_over_4 * 4  
+      
+    return pi  
+    
+pi_value = calculate_pi()  
+print(pi_value)
+
+
+import math
+
+def ramanujan_pi(n):
+    total = 0.0
+    constant = 2 * math.sqrt(2) / 9801
+    
+    for k in range(n + 1):
+        numerator = math.factorial(4 * k) * (1103 + 26390 * k)
+        denominator = (math.factorial(k) ** 4) * (396 ** (4 * k))
+        total += numerator / denominator
+    
+    pi_value = 1 / (constant * total)
+    
+    return pi_value
+
+if __name__ == '__main__':
+    n = int(input())
+    pi_value = ramanujan_pi(n)
+    print(pi_value)
+
+
+def is_prime(number):
+    """判断一个数是否为素数"""
+    if number <= 1:
+        return False
+    if number <= 3:
+        return True
+    if number % 2 == 0 or number % 3 == 0:
+        return False
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def find_max_prime(n):
+    """找到不大于n的最大素数"""
+    for num in range(n, 1, -1):
+        if is_prime(num):
+            return num
+    return None
+
+if __name__ == '__main__':
+    n = int(input())
+    max_prime = find_max_prime(n)
+    print(max_prime)
+
+
+def is_prime(number):
+    """判断一个数是否为素数"""
+    if number <= 1:
+        return False
+    if number <= 3:
+        return True
+    if number % 2 == 0 or number % 3 == 0:
+        return False
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def find_primes(n):
+    """找出n以内（包括n）的所有素数"""
+    primes = []
+    for num in range(2, n + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
+
+if __name__ == '__main__':
+    n = int(input())
+    primes = find_primes(n)
+    print(" ".join(str(prime) for prime in primes))
+
+
+def fibonacci(n):  
+    if n == 1 or n == 2:  
+        return 1  
+    a, b = 1, 1  
+    for i in range(3, n + 1):  
+        a, b = b, a + b  
+    return b  
+  
+# 获取用户输入的月份数  
+month = int(input().strip())  
+  
+# 计算本月和前一个月的兔子对数  
+current_month_rabbits = fibonacci(month)  
+previous_month_rabbits = fibonacci(month - 1)  
+  
+# 计算比值，保留三位小数  
+ratio = previous_month_rabbits / current_month_rabbits  
+  
+# 输出结果  
+print(f"{current_month_rabbits} {ratio:.3f}")
