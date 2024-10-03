@@ -1,0 +1,1267 @@
+import math
+
+def calculate_area(a, b, n):
+    if n <= 0:
+        return "error"
+    
+    dx = (b - a) / n
+    total_area = 0.0
+
+    for i in range(n):
+        x1 = a + i * dx
+        x2 = a + (i + 1) * dx
+        f1 = abs(math.sin(x1))
+        f2 = abs(math.sin(x2))
+        trapezoid_area = (f1 + f2) / 2 * dx
+        total_area += trapezoid_area
+
+    return f"{total_area:.2f}"
+
+if __name__ == "__main__":
+    try:
+        # 读取第一行输入并拆分为两个浮点数
+        first_line = input().strip().split()
+        if len(first_line) != 2:
+            print("error")
+            exit()
+        a, b = map(float, first_line)
+        
+        # 读取第二行输入并转换为整数
+        second_line = input().strip()
+        n = int(second_line)
+        
+        # 计算面积
+        area = calculate_area(a, b, n)
+        
+        # 输出结果
+        if area == "error":
+            print("error")
+        else:
+            print(area)
+    except:
+        print("error")
+
+
+def f(x):
+    # 定义给定的多项式函数
+    return x**5 - 15*x**4 + 85*x**3 - 225*x**2 + 274*x - 121
+
+def bisection_method(n):
+    # 定义初始的区间
+    low = 1.5
+    high = 2.4
+    epsilon = 10**(-n)  # 精度要求
+    
+    while (high - low) > epsilon:
+        mid = (low + high) / 2
+        f_mid = f(mid)
+        
+        if abs(f_mid) < epsilon:  # 如果f(mid)足够接近0
+            return mid
+        
+        # 根据f(mid)与f(low)的符号，决定缩小哪个区间
+        if f(low) * f_mid < 0:
+            high = mid
+        else:
+            low = mid
+    
+    # 返回最终的根，保留6位小数
+    return mid
+
+if __name__ == "__main__":
+    # 输入精度要求的n
+    n = int(input().strip())
+    
+    # 通过二分法求解方程的根
+    result = bisection_method(n)
+    
+    # 输出结果
+    print(f"{result:.6f}")
+
+
+
+def prime_factors(n):
+    """ 分解质因数，返回一个列表，包含所有的质因子 """
+    factors = []
+    # 从最小的质数2开始
+    divisor = 2
+    while n > 1:
+        while n % divisor == 0:
+            factors.append(divisor)
+            n //= divisor
+        divisor += 1
+    return factors
+
+# 读取输入
+n = int(input())
+
+# 分解质因数
+factors = prime_factors(n)
+
+# 输出结果
+print(" ".join(map(str, factors)))
+
+
+
+def calculate_tax(gross_salary, social_insurance, tax_free):
+    # Check for non-positive inputs
+    if gross_salary <= 0 or social_insurance <= 0 or tax_free <= 0:
+        return "error"
+
+    # Calculate taxable income
+    taxable_income = gross_salary - social_insurance - tax_free
+
+    if taxable_income <= 0:
+        tax = 0.00
+    else:
+        # Define the tax brackets as (upper_limit, tax_rate, quick_deduction)
+        brackets = [
+            (3000, 3, 0),
+            (12000, 10, 210),
+            (25000, 20, 1410),
+            (35000, 25, 2660),
+            (55000, 30, 4410),
+            (80000, 35, 7160),
+            (float('inf'), 45, 15160),
+        ]
+
+        # Determine the applicable tax rate and deduction
+        for upper, rate, deduction in brackets:
+            if taxable_income <= upper:
+                tax = taxable_income * rate / 100 - deduction
+                break
+
+        # Ensure tax is not negative
+        if tax < 0:
+            tax = 0.00
+
+    # Calculate net salary
+    net_salary = gross_salary - social_insurance - tax
+
+    # Format the output to two decimal places
+    return f"应缴税款{tax:.2f}元，实发工资{net_salary:.2f}元。"
+
+if __name__ == "__main__":
+    try:
+        # Read and convert the first input: gross salary
+        gross_salary_input = input().strip()
+        gross_salary = float(gross_salary_input)
+
+        # Read and convert the second input: social insurance
+        social_insurance_input = input().strip()
+        social_insurance = float(social_insurance_input)
+
+        # Read and convert the third input: tax-free amount
+        tax_free_input = input().strip()
+        tax_free = float(tax_free_input)
+
+        # Calculate tax and net salary
+        result = calculate_tax(gross_salary, social_insurance, tax_free)
+
+        # Print the result
+        print(result)
+    except:
+        # If there's any error in input conversion, print "error"
+        print("error")
+
+
+
+import math
+
+def ramanujan_pi(n):
+    """ 使用拉马努金公式计算圆周率 """
+    sum_series = 0.0
+    constant = 2 * math.sqrt(2) / 9801
+    
+    for k in range(n):
+        numerator = math.factorial(4 * k) * (1103 + 26390 * k)
+        denominator = (math.factorial(k) ** 4) * (396 ** (4 * k))
+        term = numerator / denominator
+        sum_series += term
+    
+    pi_estimate = 1 / (constant * sum_series)
+    return pi_estimate
+
+# 读取输入
+n = int(input())
+
+# 计算圆周率
+pi_value = ramanujan_pi(n)
+
+# 输出结果，保留小数点后16位
+print(f"{pi_value:.15f}")
+
+
+
+import math
+
+def calculate_pi_via_polygon(n):
+    for _ in range(n):
+        s_half = s / 2
+        try:
+        
+            OC = math.sqrt(1 - s_half ** 2)
+        except ValueError:
+            return "error"
+        
+        CD = 1 - OC
+        
+        AD = math.sqrt(s_half ** 2 + CD ** 2)
+        
+        s = AD
+        m *= 2
+
+    pi_approx = (m * s) / 2
+
+    return m, pi_approx
+
+if __name__ == "__main__":
+    try:
+        # Read input
+        input_str = input().strip()
+        n = int(input_str)
+        
+        if n <= 0:
+            print("error")
+            exit()
+        
+        m, pi_approx = calculate_pi_via_polygon(n)
+        
+        print(f"分割{n}次，边数为{m}，圆周率为{pi_approx:.6f}")
+        print(f"math库中的圆周率常量值为{math.pi:.6f}")
+        
+    except:
+        print("error")
+
+
+
+def leibniz_pi(threshold):
+    """ 使用莱布尼茨级数计算圆周率 """
+    pi_over_4 = 0.0
+    sign = 1.0
+    k = 1.0
+    
+    while True:
+        term = sign / k
+        if abs(term) < threshold:
+            break
+        pi_over_4 += term
+        k += 2
+        sign = -sign
+    
+    pi = pi_over_4 * 4
+    return pi
+
+# 读取输入
+threshold = float(input())
+
+# 计算圆周率
+pi_value = leibniz_pi(threshold)
+
+# 输出结果，保留小数点后八位
+print(f"{pi_value:.8f}")
+
+
+
+import random
+
+def monte_carlo_pi(sd, n):
+    """ 使用蒙特卡洛方法计算圆周率 """
+    random.seed(sd)
+    inside_circle = 0
+    
+    for _ in range(n):
+        x, y = random.uniform(-1, 1), random.uniform(-1, 1)
+        distance = x**2 + y**2
+        if distance < 1:
+            inside_circle += 1
+    
+    pi_estimate = 4 * (inside_circle / n)
+    return pi_estimate
+
+# 读取输入
+sd = int(input())
+n = int(input())
+
+# 计算圆周率
+pi_value = monte_carlo_pi(sd, n)
+pi = round(pi_value,6)
+# 输出结果，保留小数点后五位
+print(pi)
+
+
+
+import math
+
+def machin_pi():
+    """ 使用梅钦公式计算圆周率 """
+    # 计算 arctan(1/5) 和 arctan(1/239)
+    arctan_1_5 = math.atan(1 / 5)
+    arctan_1_239 = math.atan(1 / 239)
+    
+    # 使用梅钦公式计算 pi
+    pi = 4 * (4 * arctan_1_5 - arctan_1_239)
+    
+    return pi
+
+# 计算圆周率
+pi_value = machin_pi()
+
+# 输出结果，保留小数点后16位
+print(f"{pi_value:.16f}")
+
+
+
+import math
+
+total_cost = float(input())           # '请输入总房价：'total_cost为当前房价
+annual_salary = float(input())        # '请输入年薪：'
+portion_saved = float(input()) / 100  # '请输入月存款比例：'月存款比例，输入30转为30%
+
+# 根据首付款比例计算首付款金额和每个月需要存款数额
+# 补充你的代码
+portion_down_payment = 0.30
+down_payment = total_cost * portion_down_payment
+
+# 计算月存款
+monthly_salary = annual_salary / 12
+monthly_savings = monthly_salary * portion_saved
+
+# 计算存够首付的月份数目
+months_to_save = math.ceil(down_payment / monthly_savings)
+
+print(f'首付 {down_payment:.2f} 元', )
+print(f'月存款 {monthly_savings:.2f} 元')
+
+# 计算多少个月才能存够首付款，结果为整数，不足1月按1个月计算，即向上取整
+# 补充你的代码
+print(f'需要{math.ceil(months_to_save)}个月可以存够首付')
+
+
+
+total_cost = float(input())           # total_cost为当前房价
+annual_salary = float(input())        # 年薪
+portion_saved = float(input()) / 100  # 月存款比例，输入30转为30%
+semi_annual_raise = float(input()) /100     # 输入每半年加薪比例，输入7转化为7%
+ 
+portion_down_payment = 0.3      # 首付比例，浮点数
+# 补充你的代码，计算首付款     
+down_payment = total_cost * 0.3
+ 
+print(f'首付 {down_payment:.2f} 元')
+ 
+current_savings = 0                                # 存款金额，从0开始
+number_of_months = 0
+monthly_salary = annual_salary/12                  # 月工资
+monthly_deposit = monthly_salary * portion_saved   # 月存款
+# 计算多少个月才能存够首付款，结果为整数，不足1月按1个月计算，即向上取整
+# 补充你的代码 
+while True:
+    current_savings = current_savings + monthly_deposit
+    number_of_months = number_of_months + 1
+    if current_savings >= down_payment:  # 存够了买房去
+        break
+    if number_of_months % 6 == 0:
+        monthly_deposit = monthly_deposit * (1 + semi_annual_raise)
+    if number_of_months % 12 == 0:
+        print("第{}个月月末有{:,.0f}元存款".format(number_of_months, current_savings))
+   
+print(f'需要{number_of_months}个月可以存够首付')
+
+
+
+total_cost = float(input())  # total_cost为当前房价
+annual_salary = float(input())  # 年薪
+portion_saved = float(input()) / 100  # 月存款比例，输入30转为30%
+semi_annual_raise = float(input()) / 100  # 输入每半年加薪比例，输入7转化为7%
+ 
+portion_down_payment = 0.3  # 首付比例，浮点数
+down_payment = portion_down_payment * total_cost  # 首付款
+print(f'首付 {down_payment:.2f} 元')
+ 
+current_savings = 0  # 存款金额，从0开始
+number_of_months = 0
+# 补充你的代码，计算月工资，计算月存款
+monthly_deposit = annual_salary / 12 *portion_saved
+a = monthly_deposit
+while True:
+    number_of_months = number_of_months + 1
+    current_savings += 2.25 * 0.01 * current_savings / 12
+    current_savings = current_savings + monthly_deposit
+    if number_of_months % 6 == 0:
+        monthly_deposit = monthly_deposit * (1 + semi_annual_raise)
+    if number_of_months % 12 == 0:
+        print("第{}个月月末有{:,.0f}元存款".format(number_of_months, current_savings))
+    if current_savings >= down_payment:
+        break
+print(f'需要{number_of_months}个月可以存够首付')
+
+
+
+otal_heads = 35
+total_feet = 94
+
+# 枚举所有可能的鸡和兔的数量组合
+for chickens in range(total_heads + 1):
+    rabbits = total_heads - chickens
+    if 2 * chickens + 4 * rabbits == total_feet:
+        print(f"买{chickens}只鸡，买{rabbits}只兔")
+        break
+
+
+
+a, b = map(int, input().split())
+
+# 验证输入
+if a < 0 or b < 0:
+    print("Data Error!")
+else:
+    # 枚举所有可能的鸡和兔的数量组合
+    found_solution = False
+    for chickens in range(a + 1):
+        rabbits = a - chickens
+        if 2 * chickens + 4 * rabbits == b:
+            print(f"有{chickens}只鸡，{rabbits}只兔")
+            found_solution = True
+            break
+    
+    if not found_solution:
+        print("Data Error!")
+
+
+
+try:
+    head, feet = map(int, input().split())
+except:
+    print('无合适的组合方案')
+    exit()
+
+found = False  # 标记是否找到解
+
+# 枚举笼子A中的兔子数量y
+for y in range(0, head + 1):
+    x = 3 * y  # 笼子A中的鸡的数量
+    if x + y > head:
+        break  # 总头数已超出，提前结束
+    # 枚举笼子B中的兔子数量n，n必须为偶数
+    for n in range(0, head - x - y +1, 2):
+        m = n // 2  # 笼子B中的鸡的数量
+        total_heads = x + y + m + n
+        total_feet = 2 * x + 4 * y + 2 * m + 4 * n
+        if total_heads == head and total_feet == feet:
+            print(f'A笼中有鸡{x}只，兔{y}只')
+            print(f'B笼中有鸡{m}只，兔{n}只')
+            print(f'两笼共有鸡{x + m}只，兔{y + n}只')
+            found = True
+            break  # 找到解后退出内层循环
+    if found:
+        break  # 找到解后退出外层循环
+
+if not found:
+    print('无合适的组合方案')
+
+
+
+import math  
+   
+radius = int(input())  
+volume = (4/3) * math.pi * radius**3  
+    
+print(f"{volume:.3f}")
+
+
+
+a = int(input())
+C = 4 * a
+
+print(C)
+
+
+
+import math
+
+r = float(input())
+S = 4 * math.pi * r ** 2
+
+print(f"{S:.3f}")
+
+
+
+import math
+
+r, h = map(float, input().split())
+V = math.pi * r ** 2 * h
+
+print(f"{V:.3f}")
+
+
+
+a = int(input())
+C = 4 * a
+
+print(C)
+
+
+
+a, b, c = map(float, input().split())
+
+x_focus = -b / (2 * a)
+y_focus = (4 * a * c - b * b + 1) / (4 * a)
+
+print(f"({x_focus:.3f}, {y_focus:.3f})")
+
+
+
+import math
+
+r, h = map(float, input().split())
+
+l = math.sqrt(r ** 2 + h ** 2)
+S = math.pi * r * l + math.pi * r ** 2
+
+print(f"{S:.3f}")
+
+
+
+import math
+
+r, h = map(float, input().split())
+
+l = math.sqrt(r ** 2 + h ** 2)
+S = math.pi * r * l + math.pi * r ** 2
+
+print(f"{S:.3f}")
+
+
+
+a, b = map(int, input().split())
+C = 2 * (a + b)
+
+print(C)
+
+
+
+def calculate_prism_volume():
+    try:
+        a, b, h = map(int, input().split())
+        
+        volume = (a * b // 2) * h 
+        
+        print(volume)
+        
+    except:
+        print('无合适的组合方案')
+
+calculate_prism_volume()
+
+
+
+a = eval(input())  
+b = eval(input())  
+c = eval(input())  
+   
+if a<=0 or b<=0 or c<=0:
+    print("NO")
+else:
+    nums = sorted([a, b, c]) 
+    if nums[0]**2 + nums[1]**2 == nums[2]**2:
+        print("YES")
+    else:  
+        print("NO")
+
+
+
+year = int(input())
+
+if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
+    days = 366
+else:
+    days = 365
+
+print(days)
+
+
+
+import math
+
+a=eval(input())
+b=eval(input())
+c=eval(input())
+if a+b>c and a+c>b and b+c>a:
+    s=(a+b+c)/2
+    area=math.sqrt(s*(s-a)*(s-b)*(s-c))
+    print("YES")
+    print(f"{area:.2f}")
+else:
+    print("NO")
+
+
+
+height_1=int(input())
+height_2=int(input())
+gender=input()
+if gender=='男':
+    height_3=int((height_1+height_2)*1.08/2)
+    print(height_3)
+elif gender=='女':
+    height_3=int((height_1*0.923+height_2)/2)
+    print(height_3)
+else:
+    print("无对应公式")
+
+
+
+def calculate_tax(salary):
+    if salary < 0:
+        return "error"
+
+    tax_free = 5000
+    taxable_income = salary - tax_free
+
+    if taxable_income <= 0:
+        tax = 0.00
+    else:
+        if taxable_income <= 3000:
+            rate = 3
+            deduction = 0
+        elif taxable_income <= 12000:
+            rate = 10
+            deduction = 210
+        elif taxable_income <= 25000:
+            rate = 20
+            deduction = 1410
+        elif taxable_income <= 35000:
+            rate = 25
+            deduction = 2660
+        elif taxable_income <= 55000:
+            rate = 30
+            deduction = 4410
+        elif taxable_income <= 80000:
+            rate = 35
+            deduction = 7160
+        else:
+            rate = 45
+            deduction = 15160
+        
+        tax = taxable_income * rate / 100 - deduction
+        if tax < 0:
+            tax = 0.00
+
+    net_salary = salary - tax
+    return f"应缴税款{tax:.2f}元，实发工资{net_salary:.2f}元。"
+
+if __name__ == "__main__":
+    try:
+        input_str = input().strip()
+        salary = float(input_str)
+        result = calculate_tax(salary)
+        print(result)
+    except:
+        print("error")
+
+
+
+def is_leap_year(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    else:
+        return False
+
+year = int(input())
+
+if is_leap_year(year):
+    print(True)
+else:
+    print(False)
+
+
+
+x=int(input())
+if x>=-6 and x<0:
+    y=abs(x)+5
+    print(y)
+elif x>=0 and x<3:
+    y=1
+    for i in range(1,x+1):
+        y*=i
+    print(y)
+elif x>=3 and x<=6:
+    y=x**(x-2)
+    print(y)
+elif x>6 or x<-6:
+    y=0
+    print(y)
+
+
+
+score = int(input())  
+    
+if 90 <= score <= 100:  
+    grade = 'A'  
+elif 80 <= score < 90:  
+    grade = 'B'  
+elif 70 <= score < 80:  
+    grade = 'C'  
+elif 60 <= score < 70:  
+    grade = 'D'  
+elif 0 <= score < 60:  
+    grade = 'E'  
+else:  
+    grade = 'data error!'  
+
+print(grade)
+
+
+
+def calculate_series_sum():
+    import sys
+
+    try:
+        # 读取用户输入，并转换为整数
+        n_input = sys.stdin.read().strip()
+        n = int(n_input)
+        
+        if n <= 0:
+            print("0.000000")
+            return
+    except:
+        print("0.000000")
+        return
+
+    # 生成斐波那契数列 F1=1, F2=2, F3=3, F4=5, ...
+    F = [0, 1, 2]  # F[1]=1, F[2]=2
+    for i in range(3, n + 1):
+        next_fib = F[i - 1] + F[i - 2]
+        F.append(next_fib)
+
+    sum_terms = 0.0
+
+    if n >= 1:
+        # 第1项单独计算
+        sum_terms += 1.0 / F[1]
+
+    for k in range(2, n + 1):
+        sign = (-1) ** (k + 1)
+        numerator = k - 1
+        denominator = F[k]
+        term = sign * numerator / denominator
+        sum_terms += term
+
+    # 使用str.format()方法保留小数点后6位
+    print("{0:.6f}".format(sum_terms))
+
+# 调用函数
+calculate_series_sum()
+
+
+
+n = int(input())
+
+square_sum = sum(i ** 2 for i in range(1, n + 1))
+print(square_sum)
+
+
+
+solutions = []
+
+# 遍历所有可能的公鸡数量
+for cock in range(1, 21):  # 公鸡最多20只（因为5 * 20 = 100）
+    # 遍历所有可能的母鸡数量
+    for hen in range(1, 34):  # 母鸡最多33只（因为3 * 33 = 99）
+        # 计算小鸡的数量
+        chicken = 100 - cock - hen
+        # 检查小鸡的数量是否为3的倍数且不为零
+        if chicken > 0 and chicken % 3 == 0:
+            # 计算总花费
+            total_cost = 5 * cock + 3 * hen + chicken // 3
+            # 检查总花费是否为100
+            if total_cost == 100:
+                solutions.append((cock, hen, chicken))
+
+# 输出结果
+for solution in solutions:
+    print(f"{solution[0]} {solution[1]} {solution[2]}")
+
+
+
+max_attempts = 3
+
+# 循环允许的最大尝试次数
+for attempt in range(max_attempts):
+    # 读取用户名和密码
+    username = input()
+    password = input()
+
+    # 判断登录
+    if (username == "admin" or username == "administrator") and password == "012345":
+        print("登录成功")
+        break  # 登录成功，退出循环
+    else:
+        # 计算剩余尝试次数
+        remaining_attempts = max_attempts - attempt - 1
+        if remaining_attempts > 0:
+            print(f"登录失败")
+        else:
+            print("登录失败")
+
+
+
+heads,legs = map(int,input().split())
+if heads <= 0 or legs <= 0:
+    print("Data Error!")
+else:
+    x=(4*heads-legs)/2
+    y=heads-x
+    if x >= 0 and y >= 0 and x == int(x) and y == int(y):
+        print(f"有{int(x)}只鸡，{int(y)}只兔")
+    else:
+        print("Data Error!")
+
+
+
+def calculate_day_of_year():
+    # 读取输入，并按斜杠分割，转换为整数
+    try:
+        year, month, day = map(int, input().split('/'))
+    except:
+        # 如果输入格式不正确，退出程序
+        print('无合适的组合方案')
+        return
+    
+    # 判断是否为闰年
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        days_in_month = [31, 29, 31, 30, 31, 30, 
+                         31, 31, 30, 31, 30, 31]
+    else:
+        days_in_month = [31, 28, 31, 30, 31, 30, 
+                         31, 31, 30, 31, 30, 31]
+    
+    # 计算该日期是该年的第几天
+    day_of_year = sum(days_in_month[:month - 1]) + day
+    
+    # 输出结果，保留整数部分
+    print("{0}年{1}月{2}日是{0}年第{3}天".format(year, month, day, day_of_year))
+
+# 调用函数
+calculate_day_of_year()
+
+
+
+n = int(input())
+
+solutions = []
+
+for m in range(1, n + 1):
+    if m % 3 == 2 and m % 5 == 3 and m % 7 == 2:
+        solutions.append(m)
+
+if solutions:
+    for i in solutions:
+        print(i)
+else:
+    print("No solution!")
+
+
+
+wall = int(input()) #墙壁的厚度
+rat, mouse, day, time = 1, 1, 0, 1 #大鼠速度、小鼠速度、天数、当天工作时长（1表示工作一整天）
+drat, dmouse = 0, 0 #大鼠路程、小鼠的路程
+ 
+while wall > 0:
+    if wall - mouse - rat < 0: #第一天打洞完成
+        time = wall / (mouse + rat)    #算出需要时间
+    wall = wall - mouse - rat    #剩余墙厚
+    dmouse += time * mouse
+    drat += time * rat
+    rat = rat * 2    #大老鼠每天进度
+    mouse = mouse / 2    #小老鼠每天进度
+    day += 1
+ 
+print(day)
+print(round(dmouse, 1), round(drat, 1)) 
+
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    for i in range(3, int(num**0.5) + 1, 2):
+        if num % i == 0:
+            return False
+    return True
+
+N = int(input())
+
+for num in range(N, 1, -1):
+    if is_prime(num):
+        print(num)
+        break
+
+
+
+heads,legs = map(int,input().split())
+if heads <= 0 or legs <= 0:
+    print("Data Error!")
+else:
+    x=(4*heads-legs)/2
+    y=heads-x
+    if x >= 0 and y >= 0 and x == int(x) and y == int(y):
+        print(f"有{int(x)}只鸡，{int(y)}只兔")
+    else:
+        print("Data Error!")
+
+
+
+solutions = []
+
+# 遍历所有可能的公鸡数量
+for cock in range(1, 21):  # 公鸡最多20只（因为5 * 20 = 100）
+    # 遍历所有可能的母鸡数量
+    for hen in range(1, 34):  # 母鸡最多33只（因为3 * 33 = 99）
+        # 计算小鸡的数量
+        chicken = 100 - cock - hen
+        # 检查小鸡的数量是否为3的倍数且不为零
+        if chicken > 0 and chicken % 3 == 0:
+            # 计算总花费
+            total_cost = 5 * cock + 3 * hen + chicken // 3
+            # 检查总花费是否为100
+            if total_cost == 100:
+                solutions.append((cock, hen, chicken))
+
+# 输出结果
+for solution in solutions:
+    print(f"{solution[0]} {solution[1]} {solution[2]}")
+
+
+
+n = int(input())
+
+solutions = []
+
+for m in range(1, n + 1):
+    if m % 3 == 2 and m % 5 == 3 and m % 7 == 2:
+        solutions.append(m)
+
+if solutions:
+    for i in solutions:
+        print(i)
+else:
+    print("No solution!")
+
+
+
+import math
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+if a == 0:
+    if b == 0:
+        print("Data error!")
+    else:
+        x = -c / b
+        print(f"{x:.2f}")
+else:
+    delta = b**2 - 4*a*c
+
+    if delta < 0:
+        print("该方程无实数解")
+    elif delta == 0:
+        x = -b / (2 * a)
+        print(f"{x:.2f}")
+    else:
+        x1 = (-b + math.sqrt(delta)) / (2 * a)
+        x2 = (-b - math.sqrt(delta)) / (2 * a)
+        if x1 > x2:
+            print(f"{x1:.2f} {x2:.2f}")
+        else:
+            print(f"{x2:.2f} {x1:.2f}")
+
+
+
+string = input() 
+
+# 初始化计数器
+letter_count = 0
+digit_count = 0
+other_count = 0
+
+# 遍历字符串
+for char in string:
+    if char.isalpha():  # 判断是否为英文字母
+        letter_count += 1
+    elif char.isdigit():  # 判断是否为数字
+        digit_count += 1
+    else:  # 其他字符
+        other_count += 1
+
+# 输出结果
+print(f"letter = {letter_count}, digit = {digit_count}, other = {other_count}")
+
+
+
+def is_leap_year(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    else:
+        return False
+
+year = int(input())
+
+if is_leap_year(year):
+    print(True)
+else:
+    print(False)
+
+
+
+def calculate_tax(salary):
+    if salary < 0:
+        return "error"
+
+    tax_free = 5000
+    taxable_income = salary - tax_free
+
+    if taxable_income <= 0:
+        tax = 0.00
+    else:
+        if taxable_income <= 3000:
+            rate = 3
+            deduction = 0
+        elif taxable_income <= 12000:
+            rate = 10
+            deduction = 210
+        elif taxable_income <= 25000:
+            rate = 20
+            deduction = 1410
+        elif taxable_income <= 35000:
+            rate = 25
+            deduction = 2660
+        elif taxable_income <= 55000:
+            rate = 30
+            deduction = 4410
+        elif taxable_income <= 80000:
+            rate = 35
+            deduction = 7160
+        else:
+            rate = 45
+            deduction = 15160
+        
+        tax = taxable_income * rate / 100 - deduction
+        if tax < 0:
+            tax = 0.00
+
+    net_salary = salary - tax
+    return f"应缴税款{tax:.2f}元，实发工资{net_salary:.2f}元。"
+
+if __name__ == "__main__":
+    try:
+        input_str = input().strip()
+        salary = float(input_str)
+        result = calculate_tax(salary)
+        print(result)
+    except:
+        print("error")
+
+
+
+import math
+
+a=eval(input())
+b=eval(input())
+c=eval(input())
+if a+b>c and a+c>b and b+c>a:
+    s=(a+b+c)/2
+    area=math.sqrt(s*(s-a)*(s-b)*(s-c))
+    print("YES")
+    print(f"{area:.2f}")
+else:
+    print("NO")
+
+
+
+a=int(input())
+for i in range(a):
+    print(i, end=' ') 
+
+
+
+start = int(input())  # 输入一个整数表示数列起点
+
+# 补充一条语句，输入一个整数表示数列终点
+End = int(input())
+a=int(input())
+for i in range(start,End,a):
+    print(i,end=' ')
+
+
+
+End = int(input())
+print(sum(range(0,End,2)))
+
+
+
+a=int(input())
+result=0
+for i in range(1,a,2):
+    result=result+1/i
+print(result)
+
+
+
+a=int(input())
+result=0
+f=1
+for i in range(1,a,2):
+    result=result+f*1/i
+    f=-f
+print(result)
+
+
+
+a=int(input())
+result=0
+f=1
+for i in range(a):
+    result+=f*1/(2*i+1)
+    f=-f
+print(result)
+print(4*result)
+
+
+
+n=float(input())
+result=0
+i=0
+f=1
+while True:
+    num=f*1/(2*i+1)
+    if abs(num) <= n:
+        break
+    result+=num
+    f=-f
+    i+=1
+print(result)
+print(4*result)
+
+
+
+def buy_chickens(m, n):
+    solutions = []
+    max_cock = m // 5  # 公鸡的最大数量
+    max_hen = m // 3   # 母鸡的最大数量
+    
+    for cock in range(1, max_cock + 1):  # 遍历可能的公鸡数量
+        for hen in range(1, max_hen + 1):  # 遍历可能的母鸡数量
+            # 计算剩余的钱数和需要的小鸡数量
+            remaining_money = m - (5 * cock + 3 * hen)
+            chicken = n - cock - hen
+            
+            # 检查剩余的钱是否能正好买到剩余的小鸡，并且小鸡数量必须是3的倍数
+            if remaining_money == chicken // 3 and chicken > 0 and chicken % 3 == 0:
+                solutions.append((cock, hen, chicken))
+    
+    return solutions
+
+# 输入
+m = int(input())  # 铜钱数
+n = int(input())  # 总共买的鸡的数量
+
+# 调用函数并打印结果
+solutions = buy_chickens(m, n)
+for solution in solutions:
+    print(' '.join(map(str, solution)))
+
+
+
+def find_chickens(m, n):
+    found_solution = False
+    for cock in range(1, m // 5 + 1):
+        for hen in range(1, m // 3 + 1):
+            chicken = n - cock - hen
+            if chicken > 0 and chicken % 3 == 0:
+                total_cost = 5 * cock + 3 * hen + chicken // 3
+                if total_cost == m:
+                    print(cock, hen, chicken)
+                    found_solution = True
+                    break
+        if found_solution:
+            break
+    else:
+        print("无解")
+
+m = int(input())
+n = int(input())
+
+find_chickens(m, n)
+
+
+
+a = eval(input())  
+b = eval(input())  
+c = eval(input())  
+   
+if a<=0 or b<=0 or c<=0:
+    print("NO")
+else:
+    nums = sorted([a, b, c]) 
+    if nums[0]**2 + nums[1]**2 == nums[2]**2:
+        print("YES")
+    else:  
+        print("NO")
+
+
+
+x=int(input())
+if x>=-6 and x<0:
+    y=abs(x)+5
+    print(y)
+elif x>=0 and x<3:
+    y=1
+    for i in range(1,x+1):
+        y*=i
+    print(y)
+elif x>=3 and x<=6:
+    y=x**(x-2)
+    print(y)
+elif x>6 or x<-6:
+    y=0
+    print(y)
+
+
+
+score = int(input())  
+    
+if 90 <= score <= 100:  
+    grade = 'A'  
+elif 80 <= score < 90:  
+    grade = 'B'  
+elif 70 <= score < 80:  
+    grade = 'C'  
+elif 60 <= score < 70:  
+    grade = 'D'  
+elif 0 <= score < 60:  
+    grade = 'E'  
+else:  
+    grade = 'data error!'  
+
+print(grade)
+
+
+
+height_1=int(input())
+height_2=int(input())
+gender=input()
+if gender=='男':
+    height_3=int((height_1+height_2)*1.08/2)
+    print(height_3)
+elif gender=='女':
+    height_3=int((height_1*0.923+height_2)/2)
+    print(height_3)
+else:
+    print("无对应公式")
