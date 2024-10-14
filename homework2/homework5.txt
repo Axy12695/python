@@ -1,0 +1,920 @@
+def f(n):
+    if n%2 == 0 :
+        n = n // 2
+    else:
+        n = n*3 +1
+    return n
+num=0
+l=[]
+a = eval(input())
+if a<0 or type(a)!=int:
+    print("ERROR")
+else:
+    while a!=1:
+        #偶数
+        l.append(a)
+        num+=1
+        a=f(a)
+    l.append(a)
+    for i in l:
+        print(i,end=" ")
+    print()
+    print(num)
+
+
+
+
+import math
+
+def sum(f, a, b, n):
+    dx = (b - a) / n  
+    area = 0  
+    for i in range(n):
+        x_i = a + i * dx  
+        x_i1 = a + (i + 1) * dx  
+        height = (f(x_i) + f(x_i1)) / 2  
+        area += height * dx  
+    return area
+
+def f(x):
+    return (x**3 * math.cos(x / 2) + 1 / 2) * math.sqrt(4 - x**2)
+
+n = int(input())
+
+integral_value = sum(f, -2, 2, n)
+print(f"wifi密码是:{integral_value:.8f}")
+
+
+
+h,f = map(int, input().split()) #读入以空格分隔的两个整数，表示头和脚的数量
+##############Begin#####################
+if (4 * h - f) % 2 == 0:
+    x = (4 * h - f) // 2
+    y = h - x
+    if x >= 0 and y >= 0:
+        print(f"有{x}只鸡，{y}只兔")
+    else:
+        print("Data Error!")
+else:
+    print("Data Error!")
+
+
+
+n = int(input())
+##############Begin#####################
+# 读取输入
+solutions = []
+
+for m in range(1, n + 1):
+    if m % 3 == 2 and m % 5 == 3 and m % 7 == 2:
+        solutions.append(m)
+
+if solutions:
+    for sol in solutions:
+        print(sol)
+else:
+    print("No solution!")
+
+
+
+
+wall = int(input()) #墙壁的厚度
+rat, mouse, day, time = 1, 1, 0, 1 #大鼠速度、小鼠速度、天数、当天工作时长（1表示工作一整天）
+distance_of_rat, distance_of_mouse = 0, 0 #大鼠路程、小鼠的路程
+while wall > 0:
+    if wall - mouse - rat < 0: 
+        time = wall / (mouse + rat)   
+    wall = wall - mouse - rat   
+    distance_of_mouse += time * mouse
+    distance_of_rat += time * rat
+    rat = rat * 2   
+    mouse = mouse / 2    
+    day += 1
+################End#######################
+print(day)
+print(round(distance_of_mouse, 1), round(distance_of_rat, 1))
+
+
+
+total_lights = 765
+
+top_lights = total_lights // 255
+lights_per_layer = []
+
+for i in range(8):
+    lights_per_layer.append(top_lights * (2 ** i))
+
+for lights in lights_per_layer:
+    print(lights)
+
+
+
+wine =0 
+################Begin#################
+for _ in range(5):
+    wine += 1
+    
+    wine /= 2
+################End#################
+print(wine) #原来有多少斗酒
+
+
+
+a = float(input())
+b = float(input())
+c = float(input())
+
+if a + b > c and a + c > b and b + c > a:
+    print(True)
+else:
+    print(False)
+
+
+
+a = float(input())
+b = float(input())
+c = float(input())
+
+sides = sorted([a, b, c])
+
+if sides[0] + sides[1] > sides[2]:
+    if sides[0]**2 + sides[1]**2 == sides[2]**2:
+        print(True)
+    else:
+        print(False)
+else:
+    print(False)
+
+
+
+a = float(input())
+b = float(input())
+c = float(input())
+
+if a + b > c and a + c > b and b + c > a:
+    if a == b or a == c or b == c:
+        print(True)
+    else:
+        print(False)
+else:
+    print(False)
+
+
+
+import math
+
+a = float(input())
+b = float(input())
+c = float(input())
+
+if a + b > c and a + c > b and b + c > a:
+    s = (a + b + c) / 2
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    print(f"{round(area,2)}")
+else:
+    print("data error")
+
+
+
+import math
+
+a = eval(input())
+b = eval(input())
+c = eval(input())
+
+if a + b > c and a + c > b and b + c > a:
+    s = (a + b + c) / 2
+    triangle_area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    r = (a * b * c) / (4 * triangle_area)
+    circle_area = math.pi*r**2
+    print(f"{round(circle_area,2)}")
+else:
+    print("data error")
+
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def is_palindrome(num):
+    return str(num) == str(num)[::-1]
+
+def generate_palindromic_primes(n):
+    palindromic_primes = []
+    num = 2
+    while len(palindromic_primes) < n:
+        if is_palindrome(num) and is_prime(num):
+            palindromic_primes.append(num)
+        num += 1
+    return palindromic_primes
+
+n = int(input())
+
+palindromic_primes = generate_palindromic_primes(n)
+
+print(" ".join(map(str, palindromic_primes)))
+
+
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num <= 3:
+        return True
+    if num % 2 == 0 or num % 3 == 0:
+        return False
+    i = 5
+    while i * i <= num:
+        if num % i == 0 or num % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def is_palindrome(num):
+    return str(num) == str(num)[::-1]
+
+def reverse_number(num):
+    return int(str(num)[::-1])
+
+def generate_anti_primes(n):
+    anti_primes = []
+    num = 2
+    while len(anti_primes) < n:
+        if is_prime(num) and is_prime(reverse_number(num)) and not is_palindrome(num):
+            anti_primes.append(num)
+        num += 1
+    return anti_primes
+
+n = int(input())
+
+anti_primes = generate_anti_primes(n)
+
+print(" ".join(map(str, anti_primes)))
+
+
+
+initial_price = 15  
+quantity = 5500  
+days = 15  
+increase_rate = 0.10 
+
+current_price = initial_price
+for in range(days):
+    current_price *= (1 + increase_rate)
+buy_total = initial_price * quantity
+
+sell_total = current_price * quantity
+
+profit = sell_total - buy_total
+
+print(f"{profit:.2f}")
+
+
+
+def money_made(num, purchase, current):
+    buy_total = purchase * num
+
+    sell_total = current * num
+
+    profit = sell_total - buy_total
+    return profit
+        
+
+num = int(input())
+purchase = float(input())
+current = float(input())
+# 补充调用函数获取计算结果的语句
+profit = money_made(num, purchase, current)
+# 补充输出结果的语句，保留2位小数
+print(f"{round(profit,2)}")
+
+
+
+def pow(x, n): 
+   return_data = 1
+    for _ in range(n):
+        return_data *= x
+    return return_data
+
+if __name__ == '__main__':
+    x = float(input())
+    n = int(input())
+    return_data = float(pow(x,n))
+    print(f"{return_data}")
+
+
+
+def gcd(a, b):
+    m = max(a, b)
+    n = min(a, b)
+    r = m % n
+    while r != 0:
+        m = n
+        n = r
+        r = m % n
+    return n
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    return_data = gcd(a,b)
+    print(return_data)
+
+
+
+def lcm(a, b):
+    x = a * b    
+    r = a % b
+    while r != 0:  
+        a = b
+        b = r
+        r = a % b
+    return (x // b)
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    return_data = lcm(a,b)
+    print(return_data)
+
+
+
+def fabs(x):
+    if x<0:
+        return -x
+    else:
+        return x
+
+if __name__ == '__main__':
+    x = eval(input())
+    return_data = float(fabs(x))
+    print(return_data)
+
+
+
+def ceil(x):
+    if x == int(x):
+        return int(x)
+    elif x < 0:
+        return int(x)
+    else:
+        return int(x) + 1
+
+if __name__ == '__main__':
+    x = eval(input())
+    return_data = ceil(x)
+    print(return_data)
+
+
+
+def floor(x):
+    if x == int(x):
+        return int(x)
+    else:
+        return int(x) if x > 0 else int(x) - 1
+
+if __name__ == '__main__':
+    x = eval(input())
+    return_data = floor(x)
+    print(return_data)
+
+
+
+def factorial(n):
+    if n == 0:
+        return 1
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+if __name__ == '__main__':
+    x = int(input())
+    return_data = factorial(x)
+    print(return_data)
+
+
+
+def fsum(iterable):
+    total = 0
+    for x in iterable:
+        total += x
+    return total
+
+if __name__ == '__main__':
+    x = list(map(eval, input().split()))
+    return_data = float(fsum(x))
+    print(return_data)
+
+
+
+def is_prime(n): 
+    """判断素数的函数,接收一个正整数为参数，返回值是布尔类型。参数是素数时返回True，否则返回False"""
+    #==================Begin=================================
+    # 补充你的代码
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+    
+    #===================End================================
+
+
+positive_int = int(input())      # 输入一个正整数
+if is_prime(positive_int):
+    print(f'{positive_int}是素数') 
+else:
+    print(f'{positive_int}不是素数')
+
+
+
+
+
+def is_prime(n):
+    """判断素数的函数,接收一个正整数为参数，参数是素数时返回True，否则返回False。减小判定区间，减少循环次数，提升效率"""
+    #======================Begin=================================
+    # 补充你的代码
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+    #=======================End================================
+
+
+def output_prime(number):
+    """接收一个正整数为参数，遍历从0到number之间的所有整数
+    在一行中输出不大于number的所有素数，每个数字后一个空格，函数无返回值。"""
+    #======================Begin=================================
+    # 补充你的代码
+    primes = []
+    for num in range(2, positive_int+1):
+        if is_prime(num):
+            primes.append(num)
+    print(" ".join(map(str, primes)))
+    #=======================End================================
+
+
+positive_int = int(input())  
+output_prime(positive_int)    
+
+
+
+def is_prime(n):
+    """判断素数的函数,接收一个正整数为参数，参数是素数时返回True，否则返回False。减小判定区间，减少循环次数，提升效率"""
+    #======================Begin=================================
+    # 补充你的代码
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+    #=========================End==============================
+
+
+def is_palindrome(num):
+    """接收一个正整数参数number，遍历从0到number之间的所有整数，
+    若某个数是素数，且转为字符串后是回文字符串，则称其中回文素数
+    找出并在同一行中输出小于number的所有回文素数，每个数字后一个空格，函数无返回值。"""
+    #======================Begin=================================
+    # 补充你的代码
+    return str(num) == str(num)[::-1]
+    #=========================End==============================
+
+n = int(input())
+
+primes = []
+for num in range(2, n):
+    if is_prime(num) and is_palindrome(num):
+        primes.append(num)
+
+# 输出结果，每个数字后面一个空格
+print(" ".join(map(str, primes)))
+
+
+
+def is_prime(n):
+    """判断素数的函数,接收一个正整数为参数，参数是素数时返回True，否则返回False。减小判定区间，减少循环次数，提升效率"""
+    #======================Begin=================================
+    # 补充你的代码
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+    #========================End===============================
+
+def is_palindrome(num):
+    return str(num) == str(num)[::-1]
+
+
+def reverse_number(num):
+    return int(str(num)[::-1])
+
+n = int(input())
+
+anti_primes = []
+for num in range(2, n):
+    if is_prime(num) and is_prime(reverse_number(num)) and not is_palindrome(num):
+        anti_primes.append(num)
+
+print(" ".join(map(str, anti_primes)))
+
+
+
+
+def is_prime(n):
+    """判断素数的函数,接收一个正整数为参数，参数是素数时返回True，否则返回False"""
+    #====================Begin===================================
+    # 补充你的代码
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+    #======================End=================================
+
+    
+N = int(input())
+
+if N < 4 or N % 2 != 0:
+    print('Data error!')
+else:
+    found = False
+    for p in range(2, N // 2 + 1):
+        q = N - p
+        if is_prime(p) and is_prime(q):
+            print(f"{N}={p}+{q}")
+            found = True
+    if not found:
+        print('No valid pairs found.')
+
+
+
+def print_hi_human():  # 函数名用小写字母
+    """文档注释，双引号，说明函数的参数、功能和返回值等。
+    定义一个名为print_hi_human的无参数函数，其功能是打印一句问候语，
+    这个函数没有return语句，即没有返回值，或者说其返回值为None。
+    # >>> print_hi_human()
+    # 人类，你好！
+    """
+    # ==================Begin=====================================
+    print("人类，你好！")
+    # ===================End====================================
+
+if __name__ == '__main__':
+    # 直接使用函数名来调用函数
+    # ==================Begin=====================================
+    print_hi_human()
+
+
+
+def say_hi_human():  # 函数名用小写字母
+    """定义一个名为print_hi_human的无参数函数，其功能是返回字符串-人类，你好！"""
+    #========================Begin===============================
+    #补充你的代码
+    return "人类，你好！"
+    #==========================End=============================
+
+if __name__ == '__main__':
+    # 函数名作为print()函数的参数，输出say_hi_human()的返回值
+    #========================Begin===============================
+    #补充你的代码
+    print(say_hi_human())
+
+
+
+def say_hi_person(full_name):  # 函数名用小写字母，函数名填空
+    """定义一个名为say_hi_person的有参数函数，接受人名的字符串为参数，函数的返回值为“***，你好！”，
+    例如函数的参数为“李白”，返回值为“李白，你好！”。"""
+    #====================Begin===================================
+    # 补充你的代码
+    return f"{full_name}，你好！"
+    #=====================End==================================
+
+if __name__ == '__main__':
+    #  函数名作为print()函数的参数，输出say_hi_human()的返回值。输入的人名作为函数的参数
+    name = input()              # 输入人名
+    #====================Begin===================================
+    # 补充你的代码
+    greeting = say_hi_person(name)
+    print(greeting)
+
+
+
+def say_hi_gender(full_name, gender):  # name 和gender为形式参数
+    """定义一个名为say_hi的有参数函数，其功能是打印一句问候语
+    根据性别gender值确定称谓，男性称为“先生”，女性称为“女士”，不确定性别时称为“先生/女士”
+    返回值为替换了姓名与称谓的欢迎字符串
+    例如：尊敬的李白先生，欢迎来到火星！"""
+    # ====================Begin===================================
+    # 此处去掉注释符号“#”并补充你的代码
+    if gender == "男":
+        title = "先生"
+    elif gender == "女":
+        title = "女士"
+    else:
+        title = "先生/女士"
+
+    return f"尊敬的{full_name}{title}，欢迎来到火星！"
+    # =======================================================
+
+if __name__ == '__main__':
+    # 直接使用函数名来调用函数
+    # ====================Begin===================================
+    # 此处去掉注释符号“#”并补充你的代码
+    name = input()
+    gender = input()
+    greeting = say_hi_gender(name, gender)
+    print(greeting)
+
+
+
+def say_hi_multi_parameter(*names):    # 括号里填上参数
+    # 对齐此处补充代码
+    for name in names:
+        print(f"{name}，你好！")
+
+
+
+#调用say_hi_multi_parameter并传入参数
+say_hi_multi_parameter('孟浩然')
+say_hi_multi_parameter('杜甫', '李白', '柳宗元', '李商隐')
+
+
+
+def pow(x, n):  # 幂运算函数
+    """接收一个数字x和一个整数n为参数,返回x的n次幂的结果的浮点数类型
+    要求使pow(1.0, x) 和 pow(x, 0.0) 总是返回 1.0"""
+    #########################Begin###############################
+    return_data = 1
+    for _ in range(n):
+        return_data *= x
+    return return_data
+
+
+
+    #########################End############################### 
+
+
+
+if __name__ == '__main__':
+    x = float(input())
+    n = int(input())
+    return_data = float(pow(x,n))
+    print(f"{return_data}")
+
+
+
+def fabs(x):
+    """返回x的绝对值"""
+    # 补充你的代码
+    if x<0:
+        return -x
+    else:
+        return x
+
+if __name__ == '__main__':
+    n = float(input())
+    print(fabs(n))
+
+
+
+def Car(year, model, brand='宝马'): 
+    return f"这是一辆{year}年生产，型号是{model}的{brand}牌汽车。"
+
+
+# 以下内容不要修改
+ls = input().split()  # 根据空格切分输入字符串为列表
+if len(ls) == 3:
+    year, model, brand = ls
+else:
+    year, model = ls
+    brand = '宝马'
+
+print(Car(*ls))  
+
+
+
+def selfDivisor(num):
+    original_num = num
+    while num > 0:
+        digit = num % 10
+        if digit == 0 or original_num % digit != 0:
+            return False
+        num //= 10
+    return True
+
+N = int(input())
+
+self_divisors = []
+for i in range(1, N + 1):
+    if selfDivisor(i):
+        self_divisors.append(i)
+
+print(" ".join(map(str, self_divisors)))
+
+
+
+import math
+
+def sqrt_binary(n, epsilon):
+    low = 0
+    high = n + 0.25
+    mid = (low + high) / 2.0
+    
+    while abs(mid * mid - n) > epsilon:
+        if mid * mid < n:
+            low = mid
+        else:
+            high = mid
+        mid = (low + high) / 2.0
+    
+    return round(mid, 8)
+
+# 读取输入
+input_str = input().strip()
+n, epsilon = map(float, input_str.split(','))
+
+# 计算并输出结果
+custom_sqrt = sqrt_binary(n, epsilon)
+math_sqrt = math.sqrt(n)
+
+# 输出结果，严格保留8位小数
+print(f"{custom_sqrt:.8f}")
+print(f"{math_sqrt:.8f}")
+
+
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+
+
+def is_leap_year(year):  
+    """判断是否为闰年"""  
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):  
+        return True  
+    return False  
+  
+def days_in_month(year, month):  
+    """返回指定年份和月份的天数"""  
+    if month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:  
+        return 31  
+    elif month == 4 or month == 6 or month == 9 or month == 11:  
+        return 30  
+    elif month == 2:  
+        if is_leap_year(year):  
+            return 29  
+        else:  
+            return 28  
+    else:  
+        raise ValueError("Invalid month")  
+  
+def main():   
+    input_str = input().strip()  
+       
+    year = int(input_str[:4])  
+    month = int(input_str[4:6])  
+      
+    days = days_in_month(year, month)  
+       
+    print(days)  
+  
+# 运行主函数  
+if __name__ == "__main__":  
+    main()
+
+
+
+def F2C(f):   
+    return 5 * (f - 32) / 9  
+  
+def main():  
+    # 读取输入  
+    input_str = input().strip()  
+    f1, f2 = map(int, input_str.split(','))  
+       
+    if f1 < 32 or f2 < 32:  
+        print("输入的两个温度值都必须不小于32")  
+        return  
+       
+    if f1 > f2:  
+        print("error")  
+    else:   
+        current_f = f1  
+        while current_f <= f2:  
+            current_c = F2C(current_f)  
+            print(f"{current_f} : {current_c:.2f}")  
+            current_f += 2  
+   
+if __name__ == "__main__":  
+    main()
+
+
+
+def f(n):
+    if n % 2 == 0:
+        return 'even'
+    else:
+        return 'odd'
+
+def p(s):
+    odd_sum = 0
+    even_sum = 0
+    for char in s:
+        num = int(char)
+        if f(num) == 'odd':
+            odd_sum += num
+        else:
+            even_sum += num
+    return odd_sum, even_sum
+
+s = input().strip()
+
+odd_sum, even_sum = p(s)
+print(f'oddsum={odd_sum},evensum={even_sum}')
+
+
+
+def can_form_word(m, n):
+    if not m.isalpha():
+        return "ERROR"
+    
+    letters_in_n = set(n)
+    
+
+    for char in m:
+        if char not in letters_in_n:
+            return "NOT FOUND"
+    
+    return "FOUND"
+
+# 读取输入
+m = input().strip()
+
+result = can_form_word(m, "")
+if result == "ERROR":
+    print(result)
+else:
+    n = input().strip()
+    print(can_form_word(m, n))
